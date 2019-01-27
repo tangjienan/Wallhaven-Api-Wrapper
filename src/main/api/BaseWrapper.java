@@ -7,6 +7,8 @@ import java.util.Set;
  */
 public class BaseWrapper {
 
+    public static String baseUrl = "https://alpha.wallhaven.cc/";
+
     enum Categories {
         GENERAL, ANIME, PEOPLE;
     }
@@ -15,11 +17,24 @@ public class BaseWrapper {
         SFW, SKETCHY;
     }
 
-    public static String baseUrl = "https://alpha.wallhaven.cc/";
+    // WIP: complete sorting parameter
+    enum Sorting {
+        DATE_ADDED;
+
+        public String getSortingString() {
+            switch (this) {
+                case DATE_ADDED:
+                    return "date_added";
+            }
+            return null;
+        }
+    }
 
 
     public String getCategoriesString(Set<Categories> input) {
         StringBuilder result = new StringBuilder();
+
+        Sorting t = Sorting.DATE_ADDED;
 
         result.append(input.contains(Categories.GENERAL)? "1" : "0");
         result.append(input.contains(Categories.ANIME)? "1" : "0");
@@ -37,5 +52,7 @@ public class BaseWrapper {
 
         return result.toString();
     }
+
+
 
 }

@@ -6,13 +6,17 @@ import java.util.Set;
 /**
  * Created by donezio on 1/26/19.
  */
-public class PictureDetail {
+public class Wallpaper {
 
     Set<String> tages;
 
     Map<String, String> properties;
 
-    String resolution;
+    String height;
+
+    String width;
+
+    String alt;
 
     String id;
 
