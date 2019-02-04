@@ -1,4 +1,4 @@
-package api;
+
 
 import model.Thumb;
 import model.Wallpaper;

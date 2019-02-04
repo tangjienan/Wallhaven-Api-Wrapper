@@ -1,9 +1,11 @@
 package model;
 
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
 
 /**
  * Created by donezio on 1/26/19.
@@ -81,8 +83,28 @@ public class Wallpaper {
         tages.add(str);
     }
 
+
+    public Map<String, String> getProperties() {
+        return properties;
+    }
+
+
     public void addProperty(String key, String val) {
         properties.put(key, val);
     }
 
+
+    public void printWallpaper() {
+
+
+        System.out.println("Tags");
+        this.tages.forEach(e -> {
+            System.out.print(e);
+            System.out.print(" ");
+        } );
+        System.out.println();
+        System.out.println();
+        System.out.println("Properties");
+        uprintHashMap(this.properties);
+    }
 }
