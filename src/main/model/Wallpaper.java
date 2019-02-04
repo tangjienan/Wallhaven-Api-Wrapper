@@ -1,6 +1,8 @@
 package model;
 
 
+import Utils.utils;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -105,6 +107,6 @@ public class Wallpaper {
         System.out.println();
         System.out.println();
         System.out.println("Properties");
-        uprintHashMap(this.properties);
+        utils.printHashMap(this.properties);
     }
 }

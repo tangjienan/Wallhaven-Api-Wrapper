@@ -1,3 +1,5 @@
+import api.WallHavenWrapper;
+
 import java.io.IOException;
 /**
  * Created by donezio on 1/26/19.
