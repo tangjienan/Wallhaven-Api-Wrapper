@@ -103,7 +103,7 @@ public class WebDriver {
 
         String fullUrl = wallpaper.getAttribute("src");
 
-        System.out.println(fullUrl);
+        System.out.println(fullUrl); //ll
 
 
 
