@@ -24,7 +24,7 @@ public class Example {
         list = api.searchPictures();
         list.forEach(e -> System.out.println(e));
 
-        model.Wallpaper wp = api.getPicture("?");
+        model.Wallpaper wp = api.getPicture("6683");
         wp.printWallpaper();
         //System.out.println(wp.getAlt());
     }
