@@ -39,7 +39,8 @@ Getting the detail for one wallpaper, use wallpaper id as input
 
 ```Wallpaper wp = api.getPicture("6688");```
 
-    Example output
+Example output
+
     TimeCreated:   4 years ago
     TinyUrl:   https://whvn.cc/6683
     Category:   General
