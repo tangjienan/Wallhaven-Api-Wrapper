@@ -7,7 +7,7 @@ Include the [JAR](https://github.com/tangjienan/Wallhaven-Api-Wrapper/blob/maste
 
 # How to use
 
-Creating the wrapper
+Create the wrapper
 
 ```WallHavenWrapper api = new api.WallHavenWrapper();```
 
