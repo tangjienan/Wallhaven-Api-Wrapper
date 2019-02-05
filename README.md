@@ -33,7 +33,9 @@ Example output:
     ID: 298122  URL: https://alpha.wallhaven.cc/wallpaper/298122 Width: 1920 Height: 1080
     ID: 75897  URL: https://alpha.wallhaven.cc/wallpaper/75897 Width: 1920 Height: 1080
 
-//Getting the detail for one wallpaper, use wallpaper id as input
+Make the ```searchPictures()``` call again to get the next page
+
+Getting the detail for one wallpaper, use wallpaper id as input
 
 ```Wallpaper wp = api.getPicture("6688");```
 
