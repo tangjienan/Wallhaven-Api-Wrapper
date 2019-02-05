@@ -34,4 +34,11 @@ public class Thumb {
         this.width = width;
         this.height = height;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID: ").append(id).append(" ").append(" URL: ").append(url).append(" Width: ").append(width).append(" Height: ").append(height);
+        return sb.toString();
+    }
 }
