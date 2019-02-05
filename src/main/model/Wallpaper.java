@@ -14,6 +14,7 @@ import java.util.Set;
  */
 public class Wallpaper {
 
+
     Set<String> tages;
 
     Map<String, String> properties;
@@ -95,18 +96,27 @@ public class Wallpaper {
         properties.put(key, val);
     }
 
+    public void setTages(Set<String> tages) {
+        this.tages = tages;
+    }
+
+
 
     public void printWallpaper() {
 
 
-        System.out.println("Tags");
+
+        //System.out.println("Properties");
+        utils.printHashMap(this.properties);
+        System.out.print("  Tags:    ");
         this.tages.forEach(e -> {
             System.out.print(e);
             System.out.print(" ");
         } );
-        System.out.println();
-        System.out.println();
-        System.out.println("Properties");
-        utils.printHashMap(this.properties);
     }
+
+
+    /*
+        TODO: toString
+     */
 }

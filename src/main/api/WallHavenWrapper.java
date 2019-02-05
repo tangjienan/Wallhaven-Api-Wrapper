@@ -158,13 +158,13 @@ public class WallHavenWrapper extends BaseWrapper {
     /**
      *  perform api search
      */
-    public void searchPictures () {
+    public List<Thumb> searchPictures () {
         String url = createFullUrl();
-        driver.getTumbsFromUrl(url);
-        System.out.println(url);
+        return driver.getTumbsFromUrl(url);
+        //System.out.println(url);
     }
 
     public Wallpaper getPicture(String id) {
-        return driver.getWallpaperFromUrl("test");
+        return driver.getWallpaperFromUrl(id);
     }
 }

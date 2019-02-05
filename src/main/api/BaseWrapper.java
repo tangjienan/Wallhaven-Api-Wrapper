@@ -7,10 +7,6 @@ import java.util.Set;
  */
 public class BaseWrapper {
 
-
-
-
-
     public static String baseUrl = "https://alpha.wallhaven.cc/";
 
     public static String toplist = "https://alpha.wallhaven.cc/toplist";

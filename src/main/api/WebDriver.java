@@ -11,7 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -46,7 +48,6 @@ public class WebDriver {
             String[] dimension = figure.findElement(By.className("thumb-info")).findElement(By.className("wall-res")).getAttribute("innerHTML").split("x");
             Thumb tmp = new Thumb(Integer.parseInt(dimension[0].trim()),Integer.parseInt(dimension[1].trim()), id, picUrl);
             res.add(tmp);
-            System.out.println(tmp.getUrl());
         }
 
         return res;
@@ -62,7 +63,7 @@ public class WebDriver {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
         ChromeDriver driver = new ChromeDriver(options);
-        driver.get("https://alpha.wallhaven.cc/wallpaper/141154");
+        driver.get("https://alpha.wallhaven.cc/wallpaper/" + str);
 
 
         WebElement wallpaper = (new WebDriverWait(driver, 20))
@@ -77,6 +78,12 @@ public class WebDriver {
         String width = resolution[1].trim();
 
         List<WebElement> tags = info.findElement(By.id("tags")).findElements(By.tagName("li"));
+
+        Set<String> tagsSet = new HashSet<>();
+        for (WebElement e : tags) {
+            e = e.findElement(By.tagName("a"));
+            tagsSet.add(e.getAttribute("innerHTML"));
+        }
 
         //List<WebElement> purityElements = info.findElement(By.id("wallpaper-purity-form")).findElements(By.tagName("label"));
         List<WebElement> purityElements = info.findElement(By.id("wallpaper-purity-form")).findElements(By.xpath("*"));
@@ -136,7 +143,9 @@ public class WebDriver {
         wallpaperObj.addProperty("Size", size);
         wallpaperObj.addProperty("Views", views);
         wallpaperObj.addProperty("Purity", purity);
-        
+        wallpaperObj.setTages(tagsSet);
+
+
         return wallpaperObj;
     }
 }
