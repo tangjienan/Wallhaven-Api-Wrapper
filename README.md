@@ -9,10 +9,13 @@ Include the [JAR](https://github.com/tangjienan/Wallhaven-Api-Wrapper/blob/maste
 
 Creating the wrapper
 ```WallHavenWrapper api = new api.WallHavenWrapper();```
+
 Set keyword to search
 ```api.setSearchKeyword("Dog");```
+
 Getting a list of wallpapers
 ```List<Thumb> list = api.searchPictures();```
+
 Example output:
     ID: 272394  URL: https://alpha.wallhaven.cc/wallpaper/272394 Width: 1920 Height: 1080
     ID: 201713  URL: https://alpha.wallhaven.cc/wallpaper/201713 Width: 1920 Height: 1080
@@ -28,6 +31,7 @@ Example output:
 
 //Getting the detail for one wallpaper, use wallpaper id as input
 ```Wallpaper wp = api.getPicture("6688");```
+
     Example output
     TimeCreated:   4 years ago
     TinyUrl:   https://whvn.cc/6683
