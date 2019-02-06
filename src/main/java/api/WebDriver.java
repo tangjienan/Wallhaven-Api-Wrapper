@@ -22,6 +22,9 @@ import java.util.Set;
 public class WebDriver {
     static {
         System.setProperty("webdriver.gecko.driver", "/Users/macbookpro/Desktop/wallhaven_api_wrapper/chromedriver");
+
+        System.setProperty("http.agent", "Chrome");
+
     }
 
     public List<Thumb> getTumbsFromUrl(String url) {

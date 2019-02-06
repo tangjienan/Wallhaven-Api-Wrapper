@@ -1,5 +1,6 @@
 package api;
 
+import Utils.utils;
 import model.Thumb;
 import model.Wallpaper;
 
@@ -162,6 +163,17 @@ public class WallHavenWrapper extends BaseWrapper {
         String url = createFullUrl();
         return driver.getTumbsFromUrl(url);
         //System.out.println(url);
+    }
+
+
+    public void downloadPictures() {
+        List<Thumb> list = searchPictures();
+        int count = 1;
+        for (Thumb t : list) {
+            System.out.println("Downloading the " + count++ + " wallpapers");
+            Wallpaper wp = getPicture(t.getId());
+            utils.downloadPicFromUrl(wp.getProperties().get("FullUrl"), wp.getProperties().get("Id"));
+        }
     }
 
     public Wallpaper getPicture(String id) {
