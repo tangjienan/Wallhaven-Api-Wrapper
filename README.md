@@ -53,6 +53,9 @@ Example output
     FullUrl:   https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-6683.jpg
     Tags:    Javik Commander Shepard Garrus Vakarian Ashley Williams science fiction Mass Effect 2 Cerberus  Mass Effect Mass Effect 3 artwork video games digital art
 
-
+Download wallpaper from thumbnails, it will download thumbnails into download folder
+    
+    // After setting search keyword, or categories
+    api.downloadPictures();
 
 
