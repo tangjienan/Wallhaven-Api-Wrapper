@@ -15,6 +15,8 @@ public class BaseWrapper {
 
     public static String random = "https://alpha.wallhaven.cc/random";
 
+    public static String fullUrl = "https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-";
+
     public enum Categories {
         GENERAL, ANIME, PEOPLE;
     }
@@ -51,6 +53,13 @@ public class BaseWrapper {
     public enum Order {
         DESC, ASC
     }
+
+    public enum Resolution {
+        _1280x720, _1600x900, _2560x1440, _3840x2160;
+
+    }
+
+
 
     public String getCategoriesString(Set<Categories> input) {
         StringBuilder result = new StringBuilder();

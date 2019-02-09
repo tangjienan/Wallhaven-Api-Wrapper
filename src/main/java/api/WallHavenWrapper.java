@@ -7,6 +7,7 @@ import model.Wallpaper;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
 
 /**
  * Created by donezio on 1/26/19.
@@ -20,6 +21,8 @@ public class WallHavenWrapper extends BaseWrapper {
 
     String searchKeyWord;
 
+    Resolution resolution;
+
     int currentPage;
 
     WebDriver driver = new WebDriver();
@@ -28,7 +31,7 @@ public class WallHavenWrapper extends BaseWrapper {
 
     Sorting sort = Sorting.VIEWS;
 
-    Set<String> resolution;
+    //Set<String> resolution;
 
     Order order;
 
@@ -42,8 +45,9 @@ public class WallHavenWrapper extends BaseWrapper {
         purities = new HashSet<Purity>();
         // default
         purities.add(Purity.SFW);
-        resolution = new HashSet<String>();
+        //resolution = new HashSet<String>();
         //resolution.add("2560x1440");
+        resolution = null;
         currentPage = 0;
         state = State.WAITING;
         currentPage = 0;
@@ -71,6 +75,11 @@ public class WallHavenWrapper extends BaseWrapper {
         return this;
     }
 
+    public WallHavenWrapper setResolution(Resolution resolution) {
+        this.resolution = resolution;
+        return this;
+    }
+
     public String createFullUrl() {
 
         if (state == State.CUSTOM) {
@@ -79,36 +88,28 @@ public class WallHavenWrapper extends BaseWrapper {
             currentPage = 1;
         }
 
-
         String url = super.baseUrl;
 
         // add search
         url += "search?q=" + searchKeyWord;
-
         // add catergory
         url += "&categories=" + getCategoriesString(categories);
-
         // add purity
         url += "&purity=" + getPurityString(purities);
-
         // add sorting
         url += "&sorting=" + sort.getSortingString();
-
         // add resolution
-        if (resolution.size() != 0) {
-            for (String res : resolution) {
-
-            }
+        if (resolution != null) {
+            url += "&atleast=" + resolution.name().substring(1);
         }
-
         // add order
         url += "&order=" + order.name().toLowerCase();
-
         if (currentPage != 0) {
             url += "&page=" + currentPage;
         }
-
         state = State.CUSTOM;
+
+        System.out.println(url);
         return url;
     }
 
@@ -169,11 +170,22 @@ public class WallHavenWrapper extends BaseWrapper {
     public void downloadPictures() {
         List<Thumb> list = searchPictures();
         int count = 1;
+        ExecutorService es = Downloader.downloader();
+        String baseUrl = super.fullUrl;
         for (Thumb t : list) {
-            System.out.println("Downloading the " + count++ + " wallpapers");
-            Wallpaper wp = getPicture(t.getId());
-            utils.downloadPicFromUrl(wp.getProperties().get("FullUrl"), wp.getProperties().get("Id"));
+//            System.out.println("Downloading the " + count++ + " wallpapers");
+//            //Wallpaper wp = getPicture(t.getId());
+//            System.out.println("ID" + t.getId() + " url: " + t.getUrl());
+//            utils.downloadPicFromUrl(super.fullUrl + t.getId(), t.getId());
+
+            es.submit(new Runnable(){
+                @Override
+                public void run(){
+                    utils.downloadPicFromUrl(baseUrl + t.getId(), t.getId());
+                }
+            });
         }
+        es.shutdown();
     }
 
     public Wallpaper getPicture(String id) {
